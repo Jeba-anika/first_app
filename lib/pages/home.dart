@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Align(
                                   alignment: Alignment.bottomRight,
                                   child: Image.asset(
-                                    'assets/vegetables.jpg',
+                                    'assets/vegetables.png',
                                     width: 100,
                                     height: 80,
                                   ),
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Align(
                                 alignment: Alignment.bottomRight,
                                 child: Image.asset(
-                                  'assets/vegetables.jpg',
+                                  'assets/vegetables.png',
                                   width: 100,
                                   height: 80,
                                 ),
@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Align(
                                 alignment: Alignment.bottomRight,
                                 child: Image.asset(
-                                  'assets/vegetables.jpg',
+                                  'assets/vegetables.png',
                                   width: 100,
                                   height: 80,
                                 ),
@@ -261,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 top: -15,
                                 left: 12,
                                 child: Image.asset(
-                                  'assets/watch.jpg',
+                                  'assets/watch.png',
                                   width: 147,
                                   height: 120,
                                   alignment: Alignment.topCenter,

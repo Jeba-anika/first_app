@@ -28,7 +28,7 @@ class _FirstTabState extends State<FirstTab> {
                           top: -15,
                           left: 12,
                           child: Image.asset(
-                            'assets/watch.jpg',
+                            'assets/watch.png',
                             width: 147,
                             height: 120,
                             alignment: Alignment.topCenter,

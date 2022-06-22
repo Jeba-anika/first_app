@@ -12,7 +12,7 @@ class SecondTab extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
                 child: ListTile(
-                  leading: Image.asset('assets/watch.jpg'),
+                  leading: Image.asset('assets/watch.png'),
                   title: Text(
                     'Apple Watch',
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
@@ -40,7 +40,7 @@ class SecondTab extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               child: ListTile(
-                leading: Image.asset('assets/watch.jpg'),
+                leading: Image.asset('assets/watch.png'),
                 title: Text(
                   'Apple Watch',
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),

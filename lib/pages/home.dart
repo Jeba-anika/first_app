@@ -1,8 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:ffi' as Size;
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   List<String> _catagories = [
     'Food',
     'Electronics',
@@ -15,7 +24,18 @@ class HomeScreen extends StatelessWidget {
   ];
 
   bool closeTopContainer = false;
+
   ScrollController controller = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(() {
+      setState(() {
+        closeTopContainer = controller.offset > 50;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,33 +72,38 @@ class HomeScreen extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    Container(
-                      height: 150,
-                      width: 300,
-                      decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0, top: 10),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "40% Off During \n Covid 19",
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white),
-                              ),
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: Image.asset(
-                                  'assets/vegetables.jpg',
-                                  width: 100,
-                                  height: 80,
+                    FittedBox(
+                      fit: BoxFit.fill,
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        height: 150,
+                        width: 300,
+                        decoration: BoxDecoration(
+                            color: Colors.amber,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10.0, top: 10),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "40% Off During \n Covid 19",
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white),
                                 ),
-                              ),
-                            ]),
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Image.asset(
+                                    'assets/vegetables.jpg',
+                                    width: 100,
+                                    height: 80,
+                                  ),
+                                ),
+                              ]),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -177,30 +202,40 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
-            Container(
-              height: 40,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _catagories.length,
-                  itemBuilder: (_, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 7.0),
-                      child: Container(
-                        height: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
+            AnimatedOpacity(
+              duration: const Duration(milliseconds: 200),
+              opacity: closeTopContainer ? 0 : 1,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                alignment: Alignment.topCenter,
+                height: closeTopContainer ? 0 : 30,
+                child: Container(
+                  height: 40,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: _catagories.length,
+                      itemBuilder: (_, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 7.0),
+                          child: Container(
+                            height: 30,
+                            decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(15),
+                              ),
+                            ),
+                            child: Center(
+                                child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10.0, right: 10),
+                              child: Text(_catagories[index]),
+                            )),
                           ),
-                        ),
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 10),
-                          child: Text(_catagories[index]),
-                        )),
-                      ),
-                    );
-                  }),
+                        );
+                      }),
+                ),
+              ),
             ),
             SizedBox(
               height: 30,

@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Color(0xFF4F4C4C)),
             ),
             SizedBox(
-              height: 30,
+              height: 50,
             ),
             AnimatedOpacity(
               duration: const Duration(milliseconds: 200),
